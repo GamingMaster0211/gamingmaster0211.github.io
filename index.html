@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Showcase</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="navbar">
+            <div class="logo">My Projects</div>
+            <div class="settings-wrapper">
+                <button class="settings-btn" id="settingsBtn">
+                    <span class="settings-content">
+                            <svg class="settings-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.7 1.7 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-.4-1.1 1.7 1.7 0 0 0-1-.6 1.7 1.7 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.1-.4 1.7 1.7 0 0 0 .6-1 1.7 1.7 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.24 3.4l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 .4 1.1 1.7 1.7 0 0 0 1 .6 1.7 1.7 0 0 0 1.82-.33l.06-.06A2 2 0 1 1 20.6 7.24l-.06.06A1.7 1.7 0 0 0 19.4 9c0 .38.13.74.36 1.03.23.29.56.5.94.57H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.1.4c-.3.25-.52.6-.6 1z"></path>
+                            </svg>
+
+                            <span class="settings-text">Settings</span>
+                    <svg class="settings-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                    </span>
+                </button>
+
+                <div class="settings-dropdown" id="settingsDropdown">
+                    <div class="settings-item">
+                        <span>Dark Mode</span>
+                        <button class="theme-toggle" id="themeToggle">
+                            <span class="toggle-circle"></span>
+                        </button>
+                    </div>
+                    
+
+                    <br>
+
+                    <div class="settings-item">
+                        <span>Mono Mode</span>
+                        <button class="theme-toggle" id="monochromeToggle">
+                            <span class="toggle-circle-2"></span>
+                        </button>
+                    </div>
+
+                    <br>
+
+                    <div class="settings-item">
+                        <span>Cake Enabled</span>
+                        <button class="theme-toggle" id="cakeToggle">
+                            <span class="toggle-circle-3"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="hero">
+            <h1>Project Showcase</h1>
+            <p>Designed to showcase my custom projects.</p>
+            <div class="buttons">
+                <button class="primary-btn" id="projectListBtn">Project List</button>
+                <a href="more_information.html" class="secondary-btn">More Information</a>
+            </div>
+        </main>
+
+        <section class="cards">
+            <div class="card">
+                <h3>Information #1</h3>
+                <p>My projects, showcased here.</p>
+            </div>
+
+            <div class="card">
+                <h3>Information #2</h3>
+                <p>Projects can be downloaded and used / tested.</p>
+            </div>
+
+            <div class="card">
+                <h3>Information #3</h3>
+                <p>Projects can be downloaded and used / tested.</p>
+            </div>
+
+            <div class="card-sized-placeholder"></div>
+
+            <div class="card">
+                <h3>README.md</h3>
+                <p>README.md file download link: <a href="README.md" download>Download</a></p>
+            </div>
+        </section>
+    </div>
+
+    <section class="projects-list">
+        <h2 class="section-title" id="projectList">Available Projects</h2>
+        <div class="projects-container">
+            <div class="project-item">
+                <div class="project-details">
+                    <h3>Password Generator</h3>
+                    <p>Generates random passwords with customizable options, in a command line UI.</p>
+                    <span class="project-meta">C++</span>
+                </div>
+                <a href="projects/password-generator.zip" download class="project-download">
+                    Download
+                </a>
+            </div>
+
+            <div class="project-item">
+                <div class="project-details">
+                    <h3>Morse Code Converter</h3>
+                    <p>Converts text to Morse code and vice versa with a command line UI.</p>
+                    <span class="project-meta">C++</span>
+                </div>
+                <a href="projects/mcc.zip" download class="project-download">
+                    Download
+                </a>
+            </div>
+
+            <div class="project-item">
+                <div class="project-details">
+                    <h3>CLime</h3>
+                    <p>Command line alternative, incase the default terminal is not available.</p>
+                    <span class="project-meta">C#</span>
+                </div>
+                <a href="projects/clime.zip" download class="project-download">
+                    Download
+                </a>
+            </div>
+
+            <div class="project-item">
+                <div class="project-details">
+                    <h3>Password Manager</h3>
+                    <p>Secure password storage and generation tool with encryption, and also a clean UI.</p>
+                    <span class="project-meta">C#</span>
+                </div>
+                <a href="projects/password-manager.zip" download class="project-download">
+                    Download
+                </a>
+            </div>
+
+            <br>
+
+            <h2 class="section-title">Up-and-Coming Projects</h2>
+
+            <div class="project-item">
+                <div class="project-details">
+                    <h3>VMU (VeinMinerUltimate)</h3>
+                    <p>Advanced vein mining tool for Minecraft Bukkit, Spigot, Paper, and Purper servers, ranging from versions of 1.16 to 1.21.</p>
+                    <span class="project-meta">Java • Maven</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-details">
+                    <h3>CLU (ChunkLoadersUltimate)</h3>
+                    <p>Advanced chunk loading tool for Minecraft Bukkit, Spigot, Paper, and Purper servers, ranging from versions of 1.16 to 1.21.</p>
+                    <span class="project-meta">Java • Maven</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-details">
+                    <h3>OPS (OnePlayerSleep)</h3>
+                    <p>Simple one-player sleep plugin for Minecraft Bukkit, Spigot, Paper, and Purper servers, ranging from versions of 1.16 to 1.21.</p>
+                    <span class="project-meta">Java • Maven</span>
+                </div>
+            </div>
+    </section>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div id="cake">
+        <img src="assets/cake.png" alt="Cake">
+        <p>Have a slice of cake!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
