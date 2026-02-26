@@ -25,13 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (savedTheme) {
         document.documentElement.setAttribute("data-theme", savedTheme);
     }
-});
 
-document.addEventListener("DOMContentLoaded", () => {
     const cakeCookie = getCookie("cake");
     if (cakeCookie === "on") {
         cakeDiv.style.display = "block";
-        if(cakeToggle) cakeToggle.classList.add("active");
+        if (cakeToggle) cakeToggle.classList.add("active");
     } else {
         cakeDiv.style.display = "none";
     }
