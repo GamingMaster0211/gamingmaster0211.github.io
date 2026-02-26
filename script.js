@@ -1,10 +1,11 @@
 const html = document.documentElement;
 const darkToggle = document.getElementById("themeToggle");
 const monoToggle = document.getElementById("monochromeToggle");
+const cakeModeToggle = document.getElementById("cakeMode");
+const cakeToggle = document.getElementById("cakeToggle");
 const settingsBtn = document.getElementById("settingsBtn");
 const dropdown = document.getElementById("settingsDropdown");
 const projectListBtn = document.getElementById("projectListBtn");
-const cakeToggle = document.getElementById("cakeToggle");
 const cakeDiv = document.getElementById("cake");
 
 function setCookie(name, value, days) {
@@ -17,13 +18,13 @@ function getCookie(name) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = getCookie("theme");
-    if (savedTheme) html.setAttribute("data-theme", savedTheme);
+    const savedTheme = getCookie("theme") || "light";
+    html.setAttribute("data-theme", savedTheme);
 
     const cakeCookie = getCookie("cake");
     if (cakeCookie === "on") {
         cakeDiv.style.display = "block";
-        if (cakeToggle) cakeToggle.classList.add("active");
+        cakeToggle?.classList.add("active");
     } else {
         cakeDiv.style.display = "none";
     }
@@ -50,26 +51,27 @@ if (settingsBtn && dropdown) {
 if (darkToggle) {
     darkToggle.addEventListener("click", () => {
         const current = html.getAttribute("data-theme");
-        if (current === "dark") {
-            html.setAttribute("data-theme", "light");
-            setCookie("theme", "light", 365);
-        } else {
-            html.setAttribute("data-theme", "dark");
-            setCookie("theme", "dark", 365);
-        }
+        const next = current === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", next);
+        setCookie("theme", next, 365);
     });
 }
 
 if (monoToggle) {
     monoToggle.addEventListener("click", () => {
         const current = html.getAttribute("data-theme");
-        if (current === "monochrome") {
-            html.setAttribute("data-theme", "light");
-            setCookie("theme", "light", 365);
-        } else {
-            html.setAttribute("data-theme", "monochrome");
-            setCookie("theme", "monochrome", 365);
-        }
+        const next = current === "monochrome" ? "light" : "monochrome";
+        html.setAttribute("data-theme", next);
+        setCookie("theme", next, 365);
+    });
+}
+
+if (cakeModeToggle) {
+    cakeModeToggle.addEventListener("click", () => {
+        const current = html.getAttribute("data-theme");
+        const next = current === "cake" ? "light" : "cake";
+        html.setAttribute("data-theme", next);
+        setCookie("theme", next, 365);
     });
 }
 
@@ -105,6 +107,3 @@ if (projectListBtn) {
         document.querySelector("#projectList").scrollIntoView({ behavior: "smooth" });
     });
 }
-
-console.log("%cHey developer.", "font-size:16px; color:#ff7eb3;");
-console.log("%cSince you're here... enjoy the cake.", "color:#ff7eb3;");
