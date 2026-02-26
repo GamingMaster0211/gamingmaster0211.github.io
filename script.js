@@ -125,21 +125,25 @@ document.querySelectorAll("a[href]").forEach(link => {
     }
 });
 
-function revealOnScroll() {
-    const reveals = document.querySelectorAll(".reveal");
+function revealElements() {
+    const reveals = document.querySelectorAll('.reveal');
+    const windowHeight = window.innerHeight;
 
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
+    reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const revealPoint = 150;
 
-        if (elementTop < windowHeight - 100) {
-            element.classList.add("active");
+        if (elementTop < windowHeight - revealPoint) {
+            el.classList.add('active');
         }
     });
 }
 
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
+window.addEventListener('scroll', revealElements);
+window.addEventListener('load', () => {
+    revealElements();
+    document.body.classList.add('fade-in');
+});
 
 console.log("%cHey developer.", "font-size:16px; color:#ff7eb3;");
 console.log("%cSince you're here... enjoy the cake.", "color:#ff7eb3;");
