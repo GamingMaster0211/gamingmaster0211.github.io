@@ -360,3 +360,29 @@ body {
 .theme-toggle.active .toggle-circle-3 {
     transform: translateX(22px);
 }
+
+/* EFFECTS */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+body.fade-in {
+    opacity: 1;
+}
+
+body.fade-out {
+    opacity: 0;
+}
