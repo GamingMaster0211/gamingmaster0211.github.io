@@ -1,4 +1,4 @@
-/* THEME VARIABLES */
+/* THEME */
 
 :root {
     --bg: #f4f7fb;
@@ -31,6 +31,17 @@
     --border: rgba(255, 255, 255, 0.08);
     --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
     --shadow-hover: 0 20px 55px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="cake"] {
+    --bg: #d3a288;
+    --text: #fff5f7;
+    --card-bg: #3a291d;
+    --accent: #e6395f;
+    --accent-soft: rgba(230, 57, 95, 0.15);
+    --border: rgba(255, 230, 235, 0.12);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.6);
+    --shadow-hover: 0 20px 55px rgba(0, 0, 0, 0.75);
 }
 
 /* GLOBAL RESET */
@@ -344,7 +355,8 @@ body {
 
 .toggle-circle,
 .toggle-circle-2,
-.toggle-circle-3 {
+.toggle-circle-3,
+.toggle-circle-4 {
     width: 22px;
     height: 22px;
     background: var(--accent);
@@ -357,7 +369,8 @@ body {
 
 [data-theme="dark"] .toggle-circle,
 [data-theme="monochrome"] .toggle-circle-2,
-.theme-toggle.active .toggle-circle-3 {
+[data-theme="cake"] .toggle-circle-3,
+.theme-toggle.active .toggle-circle-4 {
     transform: translateX(22px);
 }
 
@@ -374,4 +387,16 @@ body.fade-in {
 
 body.fade-out {
     opacity: 0;
+}
+
+/* MISC */
+
+.warning-title {
+    color: #e6be39;
+    text-align: center;
+}
+
+.error-title {
+    color: #e63939;
+    text-align: center;
 }
