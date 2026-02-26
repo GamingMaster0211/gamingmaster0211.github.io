@@ -107,5 +107,41 @@ document.addEventListener("click", (e) => {
     }
 });
 
+window.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("fade-in");
+});
+
+document.querySelectorAll("a[href]").forEach(link => {
+    const url = link.getAttribute("href");
+
+    if (url && !url.startsWith("http") && !url.startsWith("#")) {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            document.body.classList.remove("fade-in");
+            document.body.classList.add("fade-out");
+
+            setTimeout(() => {
+                window.location.href = url;
+            }, 400);
+        });
+    }
+});
+
+function revealOnScroll() {
+    const reveals = document.querySelectorAll(".reveal");
+
+    reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 100) {
+            element.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
 console.log("%cHey developer.", "font-size:16px; color:#ff7eb3;");
 console.log("%cSince you're here... enjoy the cake.", "color:#ff7eb3;");
