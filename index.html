@@ -2,10 +2,11 @@
 <html lang="en" data-theme="light">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="A simple website to showcase my projects, with downloadable builds and source code."/>
     <title>Project Showcase</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -49,9 +50,18 @@
                     <br>
 
                     <div class="settings-item">
+                        <span>Cake Mode</span>
+                        <button class="theme-toggle" id="cakeMode">
+                            <span class="toggle-circle-3"></span>
+                        </button>
+                    </div>
+
+                    <br>
+
+                    <div class="settings-item">
                         <span>Cake Enabled</span>
                         <button class="theme-toggle" id="cakeToggle">
-                            <span class="toggle-circle-3"></span>
+                            <span class="toggle-circle-4"></span>
                         </button>
                     </div>
                 </div>
@@ -70,7 +80,7 @@
         <section class="cards">
             <div class="card">
                 <h3>Project Showcase</h3>
-                <p>My projects, showcased here.</p>
+                <p>My projects, showcased here, are for you, the user, to see and explore.</p>
             </div>
 
             <div class="card">
@@ -88,6 +98,14 @@
             <div class="card">
                 <h3>README.md</h3>
                 <p>README.md file download link: <a href="README.md" download>Download</a></p>
+            </div>
+
+            <div class="card-sized-placeholder"></div>
+            <div class="card-sized-placeholder"></div>
+
+            <div class="card" aria-live="assertive">
+                <h3 class="warning-title">IMPORTANT NOTICE</h3>
+                <p>Most projects do not currently have their source code available. I will publish the source code on GitHub as soon as possible.</p>
             </div>
         </section>
     </div>
@@ -139,16 +157,15 @@
                 </a>
             </div>
 
-            <br>
-
-            <h2 class="section-title">Up-and-Coming Projects</h2>
-
             <div class="project-item">
                 <div class="project-details">
                     <h3>VMU (VeinMinerUltimate)</h3>
                     <p>Advanced vein mining tool for Minecraft Bukkit, Spigot, Paper, and Purpur servers, ranging from versions of 1.16 to 1.21.</p>
                     <span class="project-meta">Java • Maven</span>
                 </div>
+                <a href="projects/vmu.zip" download class="project-download">
+                    Download
+                </a>
             </div>
 
             <div class="project-item">
@@ -157,6 +174,9 @@
                     <p>Advanced chunk loading tool for Minecraft Bukkit, Spigot, Paper, and Purpur servers, ranging from versions of 1.16 to 1.21.</p>
                     <span class="project-meta">Java • Maven</span>
                 </div>
+                <a href="projects/clu.zip" download class="project-download">
+                    Download
+                </a>
             </div>
 
             <div class="project-item">
@@ -165,8 +185,43 @@
                     <p>Simple one-player sleep plugin for Minecraft Bukkit, Spigot, Paper, and Purpur servers, ranging from versions of 1.16 to 1.21.</p>
                     <span class="project-meta">Java • Maven</span>
                 </div>
+                <a href="projects/ops.zip" download class="project-download">
+                    Download
+                </a>
+            </div>
+
+            <div class="project-item">
+                <div class="project-details">
+                    <h3>Plaza Hotel Terminal from Home Alone 2</h3>
+                    <p>Recreation of the Plaza Hotel terminal from the movie Home Alone 2. THIS IS JUST FOR SHOW, IT DOES NOT DO ANYTHING OTHER THAN WRITE TO A TEXT DOCUMENT.</p>
+                    <span class="project-meta">C++</span>
+                </div>
+                <a href="projects/plaza-hotel-terminal.zip" download class="project-download">
+                    Download
+                </a>
+            </div>
+
+            <br>
+
+            <h2 class="section-title">Up-and-Coming Projects</h2>
+            
+            <div class="project-item">
+                <div class="project-details">
+                    <h3>GalaxyOS</h3>
+                    <p>Simplistic terminal operating system written in C, virtual machine compatable only. THIS WILL NOT BE RELEASED FOR A LONG TIME, IT MIGHT EVEN GET SCRAPPED.</p>
+                    <span class="project-meta">C</span>
+                </div>
             </div>
     </section>
+
+    <br>
+    <br>
+    <br>
+    
+
+    <div class="buttons">
+        <a class="primary-btn" id="scrappedProjectListBtn" href="scrapped_projects.html">Scrapped Project List</a>
+    </div>
 
     <br>
     <br>
