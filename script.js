@@ -106,3 +106,6 @@ document.addEventListener("click", (e) => {
         settingsBtn.classList.remove("active");
     }
 });
+
+console.log("%cHey developer.", "font-size:16px; color:#ff7eb3;");
+console.log("%cSince you're here... enjoy the cake.", "color:#ff7eb3;");
