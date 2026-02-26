@@ -17,11 +17,9 @@ function getCookie(name) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Load theme from cookie
     const savedTheme = getCookie("theme");
     if (savedTheme) html.setAttribute("data-theme", savedTheme);
 
-    // Load cake state from cookie
     const cakeCookie = getCookie("cake");
     if (cakeCookie === "on") {
         cakeDiv.style.display = "block";
@@ -30,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cakeDiv.style.display = "none";
     }
 
-    // Fade-in body after initial paint
     requestAnimationFrame(() => {
         document.body.classList.add("fade-in");
     });
@@ -42,7 +39,6 @@ if (settingsBtn && dropdown) {
         settingsBtn.classList.toggle("active");
     });
 
-    // Close dropdown when clicking outside
     document.addEventListener("click", (e) => {
         if (!e.target.closest(".settings-wrapper")) {
             dropdown.classList.remove("active");
@@ -110,7 +106,6 @@ if (projectListBtn) {
     });
 }
 
-// -------------------- REVEAL ANIMATION --------------------
 function revealElements() {
     const reveals = document.querySelectorAll('.reveal');
     const windowHeight = window.innerHeight;
@@ -124,10 +119,8 @@ function revealElements() {
     });
 }
 
-// Run reveal on scroll and on load
 window.addEventListener('scroll', revealElements);
 window.addEventListener('load', () => {
-    // Allow browser to paint initial positions first
     setTimeout(() => revealElements(), 100);
 });
 
