@@ -192,4 +192,19 @@ if (cakeDiv) {
             confettiCooldown = false;
         }, confettiDelay);
     });
+
+    var konamiCode = '38,38,40,40,37,39,37,39,66,65';
+    var keyPresses = [];
+
+    document.addEventListener('keydown', function(e) {
+        keyPresses.push(e.keyCode);
+        
+        if (keyPresses.slice(-10).join(',') === konamiCode) {
+            window.open('https://gamingmaster0211.github.io/scrapped_projects.html', '_blank');
+        }
+        
+        if (!konamiCode.startsWith(keyPresses.join(','))) {
+            keyPresses = [];
+        }
+    });   
 }
