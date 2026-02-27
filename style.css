@@ -400,3 +400,21 @@ body.fade-out {
     color: #e63939;
     text-align: center;
 }
+
+/* CONFETTI */
+
+#confetti-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    opacity: 0.95;
+    will-change: transform;
+}
