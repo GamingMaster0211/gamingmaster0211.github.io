@@ -7,6 +7,7 @@ const settingsBtn = document.getElementById("settingsBtn");
 const dropdown = document.getElementById("settingsDropdown");
 const projectListBtn = document.getElementById("projectListBtn");
 const cakeDiv = document.getElementById("cake");
+const confettiContainer = document.getElementById("confetti-container");
 
 function setCookie(name, value, days) {
     const expires = new Date(Date.now() + days * 864e5).toUTCString();
@@ -105,5 +106,90 @@ document.querySelectorAll("a[href]").forEach(link => {
 if (projectListBtn) {
     projectListBtn.addEventListener("click", () => {
         document.querySelector("#projectList").scrollIntoView({ behavior: "smooth" });
+    });
+}
+
+function launchConfetti() {
+    const colors = [
+        "#ff4d6d",
+        "#ffd166",
+        "#06d6a0",
+        "#118ab2",
+        "#8338ec",
+        "#ffffff"
+    ];
+
+    const pieces = 300;
+    const gravity = 0.05;
+    const drag = 0.01;
+
+    const leftOriginX = 0;
+    const rightOriginX = window.innerWidth;
+    const originY = window.innerHeight * 0.55;
+
+    for (let i = 0; i < pieces; i++) {
+        const confetti = document.createElement("div");
+        
+        confetti.classList.add("confetti");
+        confetti.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        confettiContainer.appendChild(confetti);
+
+        const fromLeft = Math.random() < 0.5;
+
+        let x = fromLeft ? leftOriginX : rightOriginX;
+        let y = originY;
+
+        const spreadAngle = (Math.random() - 0.5) * 90;
+        const upwardForce = 10 + Math.random() * 4;
+        const angleRad = (spreadAngle * Math.PI) / 180;
+
+        let velocityX = Math.cos(angleRad) * upwardForce;
+        let velocityY = -Math.abs(Math.sin(angleRad) * upwardForce);
+
+        if (!fromLeft) velocityX *= -1;
+
+        let rotation = Math.random() * 360;
+        let rotationSpeed = (Math.random() - 0.5) * 25;
+
+        function update() {
+            velocityY += gravity;
+            velocityX *= 1 - drag;
+
+            x += velocityX;
+            y += velocityY;
+
+            rotation += rotationSpeed;
+
+            confetti.style.transform =
+                `translate(${x}px, ${y}px) rotate(${rotation}deg)`;
+
+            if (y < window.innerHeight + 60) {
+                requestAnimationFrame(update);
+            } else {
+                confetti.remove();
+            }
+        }
+
+        requestAnimationFrame(update);
+    }
+}
+
+let confettiCooldown = false;
+const confettiDelay = 1000;
+
+if (cakeDiv) {
+    cakeDiv.style.cursor = "pointer";
+
+    cakeDiv.addEventListener("click", () => {
+        if (confettiCooldown) return;
+
+        confettiCooldown = true;
+        launchConfetti();
+
+        setTimeout(() => {
+            confettiCooldown = false;
+        }, confettiDelay);
     });
 }
