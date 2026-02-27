@@ -8,6 +8,8 @@ const dropdown = document.getElementById("settingsDropdown");
 const projectListBtn = document.getElementById("projectListBtn");
 const cakeDiv = document.getElementById("cake");
 const confettiContainer = document.getElementById("confetti-container");
+const canvas = document.getElementById("galaxy-bg");
+const ctx = canvas?.getContext("2d");
 
 function setCookie(name, value, days) {
     const expires = new Date(Date.now() + days * 864e5).toUTCString();
@@ -122,7 +124,6 @@ function launchConfetti() {
     const pieces = 300;
     const gravity = 0.05;
     const drag = 0.01;
-
     const leftOriginX = 0;
     const rightOriginX = window.innerWidth;
     const originY = window.innerHeight * 0.55;
@@ -192,19 +193,131 @@ if (cakeDiv) {
             confettiCooldown = false;
         }, confettiDelay);
     });
-
-    var konamiCode = '38,38,40,40,37,39,37,39,66,65';
-    var keyPresses = [];
-
-    document.addEventListener('keydown', function(e) {
-        keyPresses.push(e.keyCode);
-        
-        if (keyPresses.slice(-10).join(',') === konamiCode) {
-            window.open('https://gamingmaster0211.github.io/scrapped_projects.html', '_blank');
-        }
-        
-        if (!konamiCode.startsWith(keyPresses.join(','))) {
-            keyPresses = [];
-        }
-    });   
 }
+
+function toggleGalaxyMode() {
+    if (!galaxyEnabled) {
+        html.setAttribute("data-theme", "galaxy");
+        galaxyEnabled = true;
+        startGalaxy();
+    } else {
+        html.setAttribute("data-theme", getCookie("theme") || "light");
+        galaxyEnabled = false;
+        stopGalaxy();
+    }
+}
+
+const konamiSequence = [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "b",
+    "a"
+];
+
+let konamiIndex = 0;
+let galaxyEnabled = false;
+let starLayers = [];
+let galaxyAnimationId = null;
+
+function resizeGalaxyCanvas() {
+    if (!canvas) return;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resizeGalaxyCanvas);
+resizeGalaxyCanvas();
+
+function createStarLayer(count, speed, size, opacity) {
+    const stars = [];
+
+    for (let i = 0; i < count; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * size + 0.5,
+            speed: speed,
+            opacity: opacity
+        });
+    }
+
+    return stars;
+}
+
+function initGalaxyStars() {
+    starLayers = [];
+
+    starLayers.push(createStarLayer(80, 0.3, 1.5, 0.15));
+    starLayers.push(createStarLayer(100, 0.6, 1.8, 0.3));
+    starLayers.push(createStarLayer(120, 1.0, 2.2, 0.6));
+    starLayers.push(createStarLayer(140, 1.5, 2.8, 0.9));
+}
+
+function drawGalaxy() {
+    if (!galaxyEnabled || !canvas) {
+        ctx?.clearRect(0, 0, canvas.width, canvas.height);
+        return;
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    starLayers.forEach(layer => {
+        layer.forEach(star => {
+            ctx.globalAlpha = star.opacity;
+            ctx.fillStyle = "#ffffff";
+
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+            ctx.fill();
+
+            star.y += star.speed;
+            star.x += star.speed * 0.2;
+
+            if (star.y > canvas.height) {
+                star.y = -10;
+                star.x = Math.random() * canvas.width;
+            }
+
+            if (star.x > canvas.width) {
+                star.x = 0;
+            }
+        });
+    });
+
+    galaxyAnimationId = requestAnimationFrame(drawGalaxy);
+}
+
+function startGalaxy() {
+    initGalaxyStars();
+    resizeGalaxyCanvas();
+    drawGalaxy();
+}
+
+function stopGalaxy() {
+    if (galaxyAnimationId) {
+        cancelAnimationFrame(galaxyAnimationId);
+        galaxyAnimationId = null;
+    }
+    ctx?.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+document.addEventListener("keydown", (e) => {
+    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+
+    if (key === konamiSequence[konamiIndex]) {
+        konamiIndex++;
+
+        if (konamiIndex === konamiSequence.length) {
+            toggleGalaxyMode();
+            konamiIndex = 0;
+        }
+    } else {
+        konamiIndex = 0;
+    }
+});
